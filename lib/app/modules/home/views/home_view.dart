@@ -1,3 +1,4 @@
+import 'package:budget_tracker_app/app/modules/home/widgets/goal_rogress_indicator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -23,11 +24,11 @@ class HomeView extends GetView<HomeController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Buy a dream house',
-                      style: TextStyle(color: Colors.white, fontSize: 40.0)),
+                  Text('Buy a dream house', style: TextStyle(fontSize: 40.0)),
                 ],
               ),
               // Goal Progress
+              GoalProgressIndicator()
             ],
           ),
         ),

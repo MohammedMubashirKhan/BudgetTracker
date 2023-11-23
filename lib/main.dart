@@ -32,6 +32,12 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white), // Default text color
+          bodyMedium: TextStyle(color: Colors.white), // Another text style
+        ),
+        iconTheme:
+            const IconThemeData(color: Colors.white), // Default icon color
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
