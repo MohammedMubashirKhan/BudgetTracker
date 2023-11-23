@@ -9,7 +9,7 @@ class GoalProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 32.0),
+      padding: const EdgeInsets.only(top: 32.0),
       child: CircularPercentIndicator(
         startAngle: 220.0,
         radius: 125.0,
@@ -35,6 +35,7 @@ class GoalProgressIndicator extends StatelessWidget {
         arcBackgroundColor: Colors.white.withOpacity(0.5),
         arcType: ArcType.FULL,
         animation: true,
+        animationDuration: 800,
       ),
     );
   }
