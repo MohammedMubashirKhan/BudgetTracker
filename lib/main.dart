@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         ),
         iconTheme:
             const IconThemeData(color: Colors.white), // Default icon color
+        listTileTheme: const ListTileThemeData(textColor: Colors.white),
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
