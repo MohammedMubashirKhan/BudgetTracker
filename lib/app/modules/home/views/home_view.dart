@@ -2,6 +2,7 @@ import 'package:budget_tracker_app/app/modules/home/widgets/goal_rogress_indicat
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -18,17 +19,32 @@ class HomeView extends GetView<HomeController> {
           decoration: const BoxDecoration(
             color: Color.fromRGBO(46, 46, 124, 1),
           ),
-          child: const Column(
+          child: Column(
             children: <Widget>[
               // Goal title
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Buy a dream house', style: TextStyle(fontSize: 40.0)),
                 ],
               ),
               // Goal Progress
-              GoalProgressIndicator()
+              const GoalProgressIndicator(),
+
+              // dot indicator
+              Obx(
+                () => AnimatedSmoothIndicator(
+                  activeIndex: controller.count.value,
+                  // TODO: Replace with the actual length
+                  count: 6,
+                  effect: WormEffect(
+                    activeDotColor: Colors.white,
+                    dotColor: Colors.white.withOpacity(0.5),
+                    dotHeight: 10,
+                    dotWidth: 10,
+                  ), // your preferred effect
+                ),
+              ),
             ],
           ),
         ),
