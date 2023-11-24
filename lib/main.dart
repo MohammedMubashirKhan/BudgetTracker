@@ -43,6 +43,28 @@ class MyApp extends StatelessWidget {
         iconTheme:
             const IconThemeData(color: Colors.white), // Default icon color
         listTileTheme: const ListTileThemeData(textColor: Colors.white),
+        navigationBarTheme: NavigationBarThemeData(
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          indicatorColor: Colors.transparent,
+          iconTheme: MaterialStateProperty.resolveWith<IconThemeData?>(
+            (Set<MaterialState> states) {
+              // Define different IconThemeData based on different states
+              if (states.contains(MaterialState.selected)) {
+                return const IconThemeData(
+                  size: 45.0, // Set the size of the selected icons
+                  color: Colors.indigo, // Set the color of the selected icons
+                );
+              } else {
+                return const IconThemeData(
+                  size: 45.0, // Set the size of the unselected icons
+                  color: Colors.grey, // Set the color of the unselected icons
+                );
+              }
+            },
+          ),
+        ),
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

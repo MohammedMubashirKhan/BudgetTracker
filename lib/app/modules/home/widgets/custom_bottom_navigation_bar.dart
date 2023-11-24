@@ -7,30 +7,48 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+        bottomLeft: Radius.circular(40),
+        bottomRight: Radius.circular(40),
+      ),
       child: NavigationBar(
-        selectedIndex: 1,
-        backgroundColor: Colors.white,
+        selectedIndex: 2,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         destinations: const [
-          Icon(
-            Icons.home,
-            size: 50,
-            color: Color.fromRGBO(167, 167, 197, 1),
+          NavigationDestination(
+            icon: Icon(
+              Icons.home,
+            ),
+            label: "home",
+            selectedIcon: Icon(
+              Icons.home,
+            ),
           ),
-          Icon(
-            Icons.sync,
-            size: 50,
-            color: Color.fromRGBO(167, 167, 197, 1),
+          NavigationDestination(
+            icon: Icon(
+              Icons.sync,
+            ),
+            label: "sync",
+            selectedIcon: Icon(
+              Icons.sync,
+            ),
           ),
-          Icon(
-            Icons.donut_large_sharp,
-            size: 50,
-            color: Color.fromRGBO(34, 33, 114, 1),
+          NavigationDestination(
+            icon: Icon(
+              Icons.donut_large_sharp,
+            ),
+            label: "donut_large_sharp",
+            selectedIcon: Icon(
+              Icons.donut_large_sharp,
+            ),
           ),
-          Icon(
-            Icons.settings,
-            size: 50,
-            color: Color.fromRGBO(167, 167, 197, 1),
+          NavigationDestination(
+            icon: Icon(
+              Icons.settings,
+            ),
+            label: "settings",
+            selectedIcon: Icon(
+              Icons.settings,
+            ),
           ),
         ],
       ),
