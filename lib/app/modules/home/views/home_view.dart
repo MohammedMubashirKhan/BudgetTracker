@@ -1,9 +1,10 @@
+import 'package:budget_tracker_app/app/modules/home/widgets/custom_bottom_navigation_bar.dart';
+import 'package:budget_tracker_app/app/modules/home/widgets/goal_insights.dart';
 import 'package:budget_tracker_app/app/modules/home/widgets/goal_rogress_indicator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -33,89 +34,15 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 // Goal Progress
-                const GoalProgressIndicator(),
-
-                // dot indicator
                 Obx(
-                  () => Padding(
-                    padding: const EdgeInsets.only(top: 32.0),
-                    child: AnimatedSmoothIndicator(
-                      activeIndex: controller.count.value,
-                      // TODO: Replace with the actual length
-                      count: 6,
-                      effect: WormEffect(
-                        activeDotColor: Colors.white,
-                        dotColor: Colors.white.withOpacity(0.5),
-                        dotHeight: 10,
-                        dotWidth: 10,
-                      ), // your preferred effect
-                    ),
-                  ),
+                  () => GoalProgressIndicator(
+                      dotIndicatorIndex: controller.count.value),
                 ),
 
-                // Goal detail
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Goal",
-                            style: TextStyle(fontSize: 25.0),
-                          ),
-                          Text(
-                            "by Jan 2030",
-                            style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.white.withOpacity(0.5)),
-                          ),
-                        ],
-                      ),
-                      const Text(
-                        "\$50,000",
-                        style: TextStyle(fontSize: 25.0),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // remaining amount to reach goal
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  margin:
-                      const EdgeInsets.only(top: 32.0, right: 32.0, left: 32.0),
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(
-                        52, 112, 237, 1), // Set the background color
-                    borderRadius:
-                        BorderRadius.circular(10.0), // Set the rounded corner
-                  ),
-                  child: const Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Need more saving"),
-                          Text("\$25,000"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Monthly Saving Projection"),
-                          Text("\$250"),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                // Remaining amount and monthly projection
+                const GoalInsights(),
 
                 // Contribution lists
-
                 Container(
                   padding: const EdgeInsets.symmetric(
                       vertical: 40.0, horizontal: 50.0),
@@ -208,6 +135,10 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
+
+      // Bottom Navigation Bar
+      bottomNavigationBar: const CustomBottomNavigationBar(),
+
       floatingActionButton: FloatingActionButton(
         onPressed: controller.increment,
         tooltip: 'Increment',
