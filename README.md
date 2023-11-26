@@ -2,15 +2,33 @@
 
 A new Flutter project.
 
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) installed on your machine.
+- [Dart SDK](https://dart.dev/get-dart) installed on your machine.
+- A code editor such as [Visual Studio Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio).
+
+
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get a local copy up and running, follow these simple steps.
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone the repository:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   ```bash
+   git clone https://github.com/MohammedMubashirKhan/BudgetTracker.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Navigate to the project directory
+    cd budget_tracker_app
+
+3. Install dependencies:
+    flutter pub get
+
+4. Running the Application
+    flutter run
+
+
+
