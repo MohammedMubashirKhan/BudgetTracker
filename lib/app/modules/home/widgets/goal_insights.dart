@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 
 class GoalInsights extends StatelessWidget {
-  const GoalInsights({super.key});
+  const GoalInsights(
+      {super.key,
+      this.amount,
+      this.saved,
+      this.deadLinedate,
+      this.formattedAmount,
+      this.remainigToReachGoal,
+      this.monthlyProjection});
+
+  final int? amount;
+  final String? formattedAmount;
+  final int? saved;
+  final String? deadLinedate;
+  final String? remainigToReachGoal;
+  final String? monthlyProjection;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +36,15 @@ class GoalInsights extends StatelessWidget {
                     style: TextStyle(fontSize: 25.0),
                   ),
                   Text(
-                    "by Jan 2030",
+                    "by $deadLinedate",
                     style: TextStyle(
                         fontSize: 17, color: Colors.white.withOpacity(0.5)),
                   ),
                 ],
               ),
-              const Text(
-                "\$50,000",
-                style: TextStyle(fontSize: 25.0),
+              Text(
+                "\$$formattedAmount",
+                style: const TextStyle(fontSize: 25.0),
               ),
             ],
           ),
@@ -45,20 +59,20 @@ class GoalInsights extends StatelessWidget {
                 52, 112, 237, 1), // Set the background color
             borderRadius: BorderRadius.circular(10.0), // Set the rounded corner
           ),
-          child: const Column(
+          child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Need more saving"),
-                  Text("\$25,000"),
+                  const Text("Need more saving"),
+                  Text("\$$remainigToReachGoal"),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Monthly Saving Projection"),
-                  Text("\$250"),
+                  const Text("Monthly Saving Projection"),
+                  Text("\$$monthlyProjection"),
                 ],
               ),
             ],

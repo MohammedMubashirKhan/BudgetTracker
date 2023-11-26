@@ -6,9 +6,15 @@ class GoalProgressIndicator extends StatelessWidget {
   const GoalProgressIndicator({
     super.key,
     required this.dotIndicatorIndex,
+    required this.selectedIndex,
+    this.savedAmount,
+    this.percent,
   });
 
   final int dotIndicatorIndex;
+  final int selectedIndex;
+  final String? savedAmount;
+  final double? percent;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +26,15 @@ class GoalProgressIndicator extends StatelessWidget {
             startAngle: 220.0,
             radius: 125.0,
             lineWidth: 5.0,
-            percent: 0.40,
+            percent: (percent ?? 0.0),
             // Inside of the circular percentage indicator
             center: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.home_rounded, size: 100),
-                const Text(
-                  "\$25,000",
-                  style: TextStyle(fontSize: 30.0),
+                Text(
+                  "\$$savedAmount",
+                  style: const TextStyle(fontSize: 30.0),
                 ),
                 Text(
                   "You Saved",
@@ -46,9 +52,9 @@ class GoalProgressIndicator extends StatelessWidget {
 
           // dot indicator
           AnimatedSmoothIndicator(
-            activeIndex: dotIndicatorIndex,
+            activeIndex: selectedIndex,
             // TODO: Replace with the actual length
-            count: 6,
+            count: dotIndicatorIndex,
             effect: WormEffect(
               activeDotColor: Colors.white,
               dotColor: Colors.white.withOpacity(0.5),
