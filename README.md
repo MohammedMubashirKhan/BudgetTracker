@@ -22,12 +22,18 @@ To get a local copy up and running, follow these simple steps.
    git clone https://github.com/MohammedMubashirKhan/BudgetTracker.git
 
 2. Navigate to the project directory
+   
+   ```bash
     cd budget_tracker_app
 
 3. Install dependencies:
+   
+   ```bash
     flutter pub get
 
 4. Running the Application
+   
+   ```bash
     flutter run
 
 
