@@ -119,7 +119,7 @@ class BudgetTrackerView extends StatelessWidget {
                             ],
                           ),
                           subtitle: Text(
-                            "${budget?.contributions?[index].formateddateOfContribuationDateTime}",
+                            "${budget?.contributions?[index].formateddateOfContributionDateTime}",
                             style: const TextStyle(
                                 color: Color.fromRGBO(10, 9, 98, 1)),
                           ),

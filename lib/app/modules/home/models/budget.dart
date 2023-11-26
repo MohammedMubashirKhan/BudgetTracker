@@ -56,7 +56,7 @@ class Budget {
     int monthsDifference = (deadLineDate?.month ?? 0) - now.month;
     deadLineInMonths = yearsDifference * 12 + monthsDifference;
 
-    monthlyProjection = (remainingAmount ?? 0) / (deadLineInMonths ?? 0);
+    monthlyProjection = (remainingAmount ?? 0) / (deadLineInMonths ?? 1);
     formattedmonthlyProjection =
         NumberFormat('#,##0').format(monthlyProjection);
   }
@@ -82,27 +82,27 @@ class Budget {
 class Contributions {
   int? amount;
   String? formattedAmount;
-  Timestamp? dateOfContribuation;
-  DateTime? dateOfContribuationDateTime;
-  String? formateddateOfContribuationDateTime;
+  Timestamp? dateOfContribution;
+  DateTime? dateOfContributionDateTime;
+  String? formateddateOfContributionDateTime;
   String? source;
 
-  Contributions({this.amount, this.dateOfContribuation, this.source});
+  Contributions({this.amount, this.dateOfContribution, this.source});
 
   Contributions.fromJson(Map<String, dynamic> json) {
     amount = json['amount'];
     formattedAmount = NumberFormat('#,##0').format(amount);
-    dateOfContribuation = json['dateOfContribuation'];
-    dateOfContribuationDateTime = dateOfContribuation?.toDate();
-    formateddateOfContribuationDateTime =
-        DateFormat('MMM y').format(dateOfContribuationDateTime!);
+    dateOfContribution = json['dateOfContribuation'];
+    dateOfContributionDateTime = dateOfContribution?.toDate();
+    formateddateOfContributionDateTime =
+        DateFormat('MMM y').format(dateOfContributionDateTime!);
     source = json['source'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['amount'] = amount;
-    data['dateOfContribuation'] = dateOfContribuation;
+    data['dateOfContribuation'] = dateOfContribution;
     data['source'] = source;
     return data;
   }
