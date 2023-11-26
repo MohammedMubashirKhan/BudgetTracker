@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:budget_tracker_app/app/modules/home/views/budget_tracker_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

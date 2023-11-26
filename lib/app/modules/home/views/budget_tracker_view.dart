@@ -1,10 +1,11 @@
+import 'package:budget_tracker_app/app/data/utils/contribution_color_selector.dart';
 import 'package:budget_tracker_app/app/modules/home/controllers/home_controller.dart';
 import 'package:budget_tracker_app/app/modules/home/models/budget.dart';
 import 'package:budget_tracker_app/app/modules/home/widgets/goal_insights.dart';
 import 'package:budget_tracker_app/app/modules/home/widgets/goal_rogress_indicator.dart';
+import 'package:budget_tracker_app/app/modules/home/widgets/linear_progress_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class BudgetTrackerView extends StatelessWidget {
   const BudgetTrackerView({
@@ -85,21 +86,19 @@ class BudgetTrackerView extends StatelessWidget {
                         )
                       ],
                     ),
-                    LinearPercentIndicator(
-                      padding: const EdgeInsets.all(0),
-                      progressColor: Colors.red,
-                      percent: 0.5,
-                      lineHeight: 10.0,
-                      barRadius: const Radius.circular(10),
-                    ),
+                    LinearProgressStack(
+                        contributionValues: budget?.contributions
+                            ?.map((e) =>
+                                (e.amount ?? 0.0) / (budget?.amount ?? 0.0))
+                            .toList()),
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: budget?.contributions?.length ?? 0,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          leading: const CircleAvatar(
-                            backgroundColor:
-                                Colors.blue, // Customize the dot color
+                          leading: CircleAvatar(
+                            backgroundColor: contributionColor(
+                                index), // Customize the dot color
                             radius: 4.0, // Customize the dot size
                           ),
                           title: Row(
